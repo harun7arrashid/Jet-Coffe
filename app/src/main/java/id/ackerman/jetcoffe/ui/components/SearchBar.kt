@@ -31,8 +31,8 @@ fun SearchBar(modifier: Modifier = Modifier) {
 
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = MaterialTheme.colors.surface,
-            disabledIndicatorColor = Color.Transparent, // indicator biar garis bawah nya ilang
-            focusedIndicatorColor = Color.Transparent,
+            disabledIndicatorColor  = Color.Transparent, // indicator biar garis bawah nya ilang
+            focusedIndicatorColor   = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent
         ),
 

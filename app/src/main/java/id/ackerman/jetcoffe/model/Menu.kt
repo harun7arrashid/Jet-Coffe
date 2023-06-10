@@ -15,4 +15,4 @@ val dummyMenu = listOf(
     Menu(R.drawable.menu4, "Choco Creamy Latte", "Rp 16.000"),
 )
 
-val dummyBestSellerMenu = dummyMenu.shuffled()
+val dummyBestSellerMenu = dummyMenu.shuffled() // untuk mengacak urutan komponen
