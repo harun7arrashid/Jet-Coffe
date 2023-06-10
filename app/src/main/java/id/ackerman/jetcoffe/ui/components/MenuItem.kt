@@ -51,7 +51,7 @@ fun MenuItem(menu: Menu, modifier: Modifier = Modifier) {
 
                 Text(
                     text = menu.price,
-                    style = MaterialTheme.typography.subtitle1
+                    style = MaterialTheme.typography.subtitle2
                 )
             }
         }

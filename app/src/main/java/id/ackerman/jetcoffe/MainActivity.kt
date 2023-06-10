@@ -7,6 +7,8 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
@@ -18,10 +20,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import id.ackerman.jetcoffe.model.Menu
+import id.ackerman.jetcoffe.model.dummyBestSellerMenu
 import id.ackerman.jetcoffe.model.dummyCategory
-import id.ackerman.jetcoffe.ui.components.CategoryItem
-import id.ackerman.jetcoffe.ui.components.SearchBar
-import id.ackerman.jetcoffe.ui.components.SectionText
+import id.ackerman.jetcoffe.model.dummyMenu
+import id.ackerman.jetcoffe.ui.components.*
 import id.ackerman.jetcoffe.ui.theme.JetCoffeTheme
 
 class MainActivity : ComponentActivity() {
@@ -38,10 +41,24 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun JetCoffeeApp() {
 
-    Column {
+    Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
+
         Banner()
-        SectionText(stringResource(R.string.section_category))
-        CategoryRow()
+
+        HomeSection(
+            title = stringResource(R.string.section_category),
+            content = { CategoryRow() }
+        )
+
+        HomeSection(stringResource(R.string.section_favorite_menu)) {
+            MenuRow(dummyMenu)
+        }
+
+        HomeSection(stringResource(R.string.section_best_seller_menu)) {
+            MenuRow(dummyBestSellerMenu)
+        }
+
+
     }
 
 }
@@ -55,7 +72,7 @@ fun Banner(modifier: Modifier = Modifier) {
             painter = painterResource(R.drawable.banner),
             contentDescription = "Banner Image",
             contentScale = ContentScale.Crop, // Fit, Fill Bounds
-            modifier = Modifier.height(160.dp)
+            modifier     = Modifier.height(160.dp)
         )
 
         SearchBar()
@@ -78,6 +95,26 @@ fun CategoryRow(modifier: Modifier = Modifier) {
 
         }
     }
+}
+
+@Composable
+fun MenuRow(
+    listMenu: List<Menu>,
+    modifier: Modifier = Modifier
+) {
+
+    LazyRow(
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        modifier = modifier
+    ) {
+        
+        items(listMenu, key = { it.title }) { menu ->
+            MenuItem(menu)
+        }
+        
+    }
+
 }
 
 @Composable
