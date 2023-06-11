@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun MyScreen(modifier: Modifier = Modifier) {
 
-    // State terletak di MyScreen dan MySwitch
+    // State hanya ada di MyScreen
     var checked by remember { mutableStateOf(false) }
 
     Row(
@@ -25,7 +25,7 @@ fun MyScreen(modifier: Modifier = Modifier) {
         modifier = modifier.padding(16.dp)
     ) {
 
-        MySwitch(initialChecked = checked, onCheckedChanged = { checked = it } )
+        MySwitch(checked, onCheckedChanged = { checked = it } )
         Text(
             text = if (checked) "ON" else "OFF",
             Modifier.clickable {
@@ -35,21 +35,13 @@ fun MyScreen(modifier: Modifier = Modifier) {
     }
 }
 
+// checked bersifat Immutable (tidak dapat diubah)
 @Composable
-fun MySwitch(
-    initialChecked: Boolean,
-    onCheckedChanged: (Boolean) -> Unit,
-    modifier: Modifier = Modifier
-) {
+fun MySwitch(checked: Boolean, onCheckedChanged: (Boolean) -> Unit) {
 
-    // state terletak di MyScreen dan MySwitch
-    var checked by remember { mutableStateOf(initialChecked) }
     Switch(
         checked = checked,
-        onCheckedChange = {
-            checked = it
-            onCheckedChanged(it)
-        }
+        onCheckedChange = { onCheckedChanged(it) }
     )
 }
 
