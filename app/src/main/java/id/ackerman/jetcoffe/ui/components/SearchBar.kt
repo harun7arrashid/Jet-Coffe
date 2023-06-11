@@ -15,7 +15,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import id.ackerman.jetcoffe.R
-import id.ackerman.jetcoffe.ui.theme.JetCoffeTheme
+import id.ackerman.jetcoffe.ui.theme.JetCoffeeTheme
 
 @Composable
 fun SearchBar(modifier: Modifier = Modifier) {
@@ -50,7 +50,7 @@ fun SearchBar(modifier: Modifier = Modifier) {
 @Composable
 fun SearchBarPreview() {
 
-    JetCoffeTheme {
+    JetCoffeeTheme {
         SearchBar()
     }
 }

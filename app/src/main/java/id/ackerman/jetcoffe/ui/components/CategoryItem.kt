@@ -18,7 +18,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import id.ackerman.jetcoffe.R
 import id.ackerman.jetcoffe.model.Category
-import id.ackerman.jetcoffe.ui.theme.JetCoffeTheme
+import id.ackerman.jetcoffe.ui.theme.JetCoffeeTheme
 
 @Composable
 fun CategoryItem(category: Category, modifier: Modifier = Modifier) {
@@ -48,7 +48,7 @@ fun CategoryItem(category: Category, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 fun CategoryItemPreview() {
 
-    JetCoffeTheme {
+    JetCoffeeTheme {
 
         CategoryItem(
             category = Category(
